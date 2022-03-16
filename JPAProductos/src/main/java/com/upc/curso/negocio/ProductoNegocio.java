@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service //no agnostica
 public class ProductoNegocio {
@@ -17,8 +16,7 @@ public class ProductoNegocio {
        return productoRepositorio.save(producto);
     }
     public Producto buscar(Long codigo) throws Exception {
-        Producto producto = productoRepositorio.findById(codigo).orElseThrow(() -> new Exception("No se encontró entidad"));
-        return producto;
+        return productoRepositorio.findById(codigo).orElseThrow(() -> new Exception("No se encontró entidad"));
     }
     public List<Producto> listado(){
         return (List<Producto>)productoRepositorio.findAll();
